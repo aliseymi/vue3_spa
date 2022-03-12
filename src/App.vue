@@ -1,6 +1,8 @@
 <template>
   <h1>Seymi</h1>
 
+  <div class="alert alert-primary">This is alert!</div>
+
   <router-view></router-view>
 </template>
 
