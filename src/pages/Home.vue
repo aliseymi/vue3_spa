@@ -8,6 +8,8 @@
           animi excepturi aspernatur? Optio laudantium tempora consequuntur!
           Obcaecati est porro ab doloribus?
         </p>
+
+        <router-link :to="{ name: 'users.index' }" class="btn btn-dark">Users</router-link>
       </div>
     </div>
   </div>

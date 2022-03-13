@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .router-link-active {
     color: rgba(0, 0, 0, 0.9) !important;
 
