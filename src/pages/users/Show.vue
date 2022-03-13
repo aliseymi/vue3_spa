@@ -15,7 +15,7 @@ import UserCardView from "@/components/users/CardView.vue";
 import { useRoute } from "vue-router";
 
 export default {
-  name: "IndexUser",
+  name: "ShowUser",
 
   components: {
     UserCardView,

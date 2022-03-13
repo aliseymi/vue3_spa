@@ -10,6 +10,7 @@
         </p>
 
         <router-link :to="{ name: 'users.index' }" class="btn btn-dark">Users</router-link>
+        <router-link :to="{ name: 'posts.index' }" class="btn btn-light ms-3">Posts</router-link>
       </div>
     </div>
   </div>
