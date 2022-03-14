@@ -14,8 +14,14 @@
       </ul>
 
       <div class="card-footer">
-        <button class="btn btn-sm btn-danger me-4">Delete</button>
-        <router-link class="btn btn-sm btn-dark" :to="{ name: 'post.edit', params: { id: post.id } }">Edit</router-link>
+        <button @click="deletePost" class="btn btn-sm btn-danger me-4">
+          Delete
+        </button>
+        <router-link
+          class="btn btn-sm btn-dark"
+          :to="{ name: 'post.edit', params: { id: post.id } }"
+          >Edit</router-link
+        >
       </div>
     </div>
   </div>
@@ -25,6 +31,7 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import Swal from "sweetalert2";
 
 export default {
   name: "ShowPost",
@@ -49,7 +56,37 @@ export default {
 
     getPost();
 
-    return { post, loading };
+    function deletePost() {
+      Swal.fire({
+        icon: "question",
+        title: "note",
+        text: `Do you want to delete post (${route.params.id})?`,
+        showCancelButton: true,
+        showConfirmButton: true,
+        cancelButtonText: "Cancel",
+        cancelButtonColor: "#bb2d3b",
+        confirmButtonText: "Yes",
+        focusCancel: true,
+        preConfirm: () => {
+          axios
+            .delete(
+              "https://jsonplaceholder.typicode.com/posts/${route.params.id}"
+            )
+            .then(() => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Thanks',
+                text: `Post (${route.params.id}) deleted successfully`,
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        },
+      });
+    }
+
+    return { post, loading, deletePost };
   },
 };
 </script>
